@@ -43,14 +43,14 @@ export interface RigMap {
   chains: Record<Finger, string[]>;
 }
 
-export const BABYLON_RIG_R: RigMap = {
-  wrist: "wrist_R",
+export const WEBXR_RIG: RigMap = {
+  wrist: "wrist",
   chains: {
-    thumb: ["thumb_metacarpal_R", "thumb_proxPhalanx_R", "thumb_distPhalanx_R", "thumb_tip_R"],
-    index: ["index_metacarpal_R", "index_proxPhalanx_R", "index_intPhalanx_R", "index_distPhalanx_R", "index_tip_R"],
-    middle: ["middle_metacarpal_R", "middle_proxPhalanx_R", "middle_intPhalanx_R", "middle_distPhalanx_R", "middle_tip_R"],
-    ring: ["ring_metacarpal_R", "ring_proxPhalanx_R", "ring_intPhalanx_R", "ring_distPhalanx_R", "ring_tip_R"],
-    pinky: ["little_metacarpal_R", "little_proxPhalanx_R", "little_intPhalanx_R", "little_distPhalanx_R", "little_tip_R"],
+    thumb: ["thumb-metacarpal", "thumb-phalanx-proximal", "thumb-phalanx-distal", "thumb-tip"],
+    index: ["index-finger-metacarpal", "index-finger-phalanx-proximal", "index-finger-phalanx-intermediate", "index-finger-phalanx-distal", "index-finger-tip"],
+    middle: ["middle-finger-metacarpal", "middle-finger-phalanx-proximal", "middle-finger-phalanx-intermediate", "middle-finger-phalanx-distal", "middle-finger-tip"],
+    ring: ["ring-finger-metacarpal", "ring-finger-phalanx-proximal", "ring-finger-phalanx-intermediate", "ring-finger-phalanx-distal", "ring-finger-tip"],
+    pinky: ["pinky-finger-metacarpal", "pinky-finger-phalanx-proximal", "pinky-finger-phalanx-intermediate", "pinky-finger-phalanx-distal", "pinky-finger-tip"],
   },
 };
 
@@ -166,7 +166,7 @@ function palmBasisQuat(p0: THREE.Vector3, p5: THREE.Vector3, p9: THREE.Vector3, 
   out.setFromRotationMatrix(m);
 }
 
-export function buildHandCache(rootObj: THREE.Object3D, rig: RigMap = BABYLON_RIG_R): HandCache {
+export function buildHandCache(rootObj: THREE.Object3D, rig: RigMap = WEBXR_RIG): HandCache {
   rootObj.updateWorldMatrix(true, true);
   const missing: string[] = [];
 
